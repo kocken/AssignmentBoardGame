@@ -7,7 +7,7 @@ Uppgiften består av två delar, en programmeringsdel och en dokumentationsdel.
 Allt ni gör skall göras i ert GitHub repo (båda kod och dokumentation), som ligger på ert Team. Ni skall använda en ["commit tidigt och ofta"](https://blog.codinghorror.com/check-in-early-check-in-often/) ([1](https://sethrobertson.github.io/GitBestPractices/)) strategi, såklart bör ni endast commita kod och dokumentation som kan kompileras.
 
 # Programmering
-I detta projekt ska ni implementera ett brädspel, ni får själv välja vilket, men där finns ett Fia bräde (Ludo på engelska) i mappen Content som ni kan använda som grund (CSS och HTML). Den är enklast uppgift är ett spel vart man turas om att spela.
+I detta projekt ska ni implementera ett brädspel, ni får själv välja vilket, men där finns ett Fia bräde (Ludo på engelska) i mappen Content som ni kan använda som grund (CSS och HTML). Den enklast uppgift är ett spel vart man turas om att spela.
 
 Spelet ska implanteras som ett tomt ASP.NET MVC projekt (inte .NET Core) och Razor i kombination med HTML ska användas till att presentera spelet. 
 Eran solution och all kod ska ligga i mappen Src, varje team har bara en kodbas!!
@@ -23,7 +23,7 @@ Start sidan finns på root URLen. Ex: http://localhost/
 Varje spel har sin egen unika URL. Ex: http://localhost/123456789
 
 ## Grundtanken
-Spelet ska vara en websida vart man går in som spellera.
+Spelet ska vara en webbsida vart man går in som spellera.
 
 När man som ny spellera kommer in på sidan ska man kunna välja att starta ett spel eller vara del va ett eksisterende spel, alla eksisterende öppna spel visas som en lista. 
 
@@ -31,7 +31,7 @@ Om man vill starta ett nytt spel ska man ange sin epost adress och hur många sp
 
 Om man redan är en del av ett spel hoppar automatisk in på spelet och ser därför aldrig första sidan.
 
-När alla spelleror är inne i spelet (angivit med antalet av spellera) stängs spelet och det startar. Alla spelleror får ett mail om att spelet starter och första spelare får en epost om att det är hens rond.
+När alla spelleror är inne i spelet (angivit med antalet av spellera) låsas spelet och det startar. Bäst är det om alla spelleror får en notfikation (eg. ett mail) om att spelet starter och första spelare får en epost om att det är hens rond. Det är kanske bra om man kan kliva ur ett spel som är låst.
 
 En spelar starter sin rond med att klicka på en knap som rullar tärningen, och väljer efter detta brickan som hen önskar att flytta.
 
