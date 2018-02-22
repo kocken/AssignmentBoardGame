@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameEngine", "GameEngine\GameEngine.csproj", "{EDCCB4AD-8ED0-45EC-AFCA-3C00BCB4081B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoardGameWui", "BoardGameWui\BoardGameWui.csproj", "{B1CFBBC4-11F3-44B5-98D8-9B738E572648}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EDCCB4AD-8ED0-45EC-AFCA-3C00BCB4081B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDCCB4AD-8ED0-45EC-AFCA-3C00BCB4081B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDCCB4AD-8ED0-45EC-AFCA-3C00BCB4081B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDCCB4AD-8ED0-45EC-AFCA-3C00BCB4081B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1CFBBC4-11F3-44B5-98D8-9B738E572648}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1CFBBC4-11F3-44B5-98D8-9B738E572648}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1CFBBC4-11F3-44B5-98D8-9B738E572648}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1CFBBC4-11F3-44B5-98D8-9B738E572648}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E9A763BF-BB77-4638-8D26-6E243861CDF9}
+	EndGlobalSection
+EndGlobal

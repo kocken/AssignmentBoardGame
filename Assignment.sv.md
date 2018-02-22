@@ -1,6 +1,6 @@
 # Brädspel
 
-Uppgiften skall lösas i teams på 3 till 4 studenter.
+Uppgiften skall lösas i teams på 3 till 4 studenter (eller [alternativt ensamt](#betygsättning-vid-en-persons-grupp)).
 
 Uppgiften består av två delar, en programmeringsdel och en dokumentationsdel. 
 
@@ -56,3 +56,71 @@ Skriv user stories (i mappen DocsSrc\userstories), och starta inte koda något i
 Beskriv arkitekturen av eran applikation (i mappen DocsSrc\architecture).
 
 Om ni använder någon externa källor (båda kod och annat) ange dom i dokumentationen.
+
+# Betygsättning vid grupp-projekt (3-4 personer)
+## För G
+* En (och endast en) Visual Studio solution placerat i mappen Src
+* 3 user stories skriven (på svenska eller engelska) i Markdown och placerat i mappen DocsSrc\userstories
+* Solutionen ska beså av minst tre projekt:
+  * ASP.NET Web Application (.NET Framework)
+  * Class Library (.NET Framework)
+  * Unit Test Project (.NET Framework)
+
+* Koden kompilera och det går att köra projektet lokalt
+* All logik som rör spelet, även kast av tärning, är placerat i spelmotorn, och där finns enhetstestar som validera om koden funkar
+* Ett grafiskt gränssnitt gjort med HTML och Razor, eventuellt med stöd från Javascript för att göra gränssnittet mer interaktivt.
+* Ett dokument (på svenska eller engelska) som beskriver arkitekturen på projektet, speciellt intressant är hur spelmotor om man skulle önska att använda den i ett annat projekt och hur är koplingen emellan gränssnitt och backend
+* Som spellera ska gå att joina skåpa ett nytt spel
+* Som spellera ska gå att joina ett eksisterende spel
+* Spelet varje spelare måste befinna sig på olik webbläsare, så att det styrs med cookies vilket spel man är en del av 
+
+## För VG (G + minst 3 för VG)
+* Mail utskick för att informera spelarna, äntligen direkt via SMTP eller en tjänst som SendGrid
+  * Spel start
+  * Ny rond
+
+* En automatisk dokumentation av spelmotorn (gameengine) i DocFx, genererat ur från källkoden
+* En TOC.yml som innehåller alla userstories i mappen DocsSrc\userstories
+* Spelmotorn är implementera med SOLID principerna
+* Projektet är ”installerat” på en extern webbserver (eg. Azure), så det går att komma åt den
+* GitHubs ”Code review”-funktion används regelbunden i gruppens projekt
+* Dynamisk uppdatering av spelet, om en spelare i sin webbläsare flyttar på en bricka uppdateras skärmen på alla andra webbläsare 
+
+
+# Betygsättning vid en persons-grupp
+Det rekomenderas att göra ett simpelt spel som tic-tac-toe, där är gjort en grund för ett tic-tac-toe spel i src mappen, detta kan du i så fall bygga vidre på
+
+En använder starter ett spel och en annan använder joiner spelet (oftest i en annan webbläsere), bara ett spel behöver att kunne köra i taget
+
+## Absolut Minimum
+* Använn Visual Studio solution BoardGame.sln som är placerat i mappen Src, som består av två projekt
+  * ASP.NET Web Application (.NET Framework) - BoardGameWui
+  * Class Library (.NET Framework) - GameEngine
+
+* Koden kompilera och det går att köra projektet lokalt
+* Ett grafiskt gränssnitt gjort med HTML och Razor, till att rita upp spelbräda och pjäser
+
+## För G (Absolut minimum + minst 2 för G)
+
+* 5 user stories skriven (på svenska eller engelska) i Markdown och i dokumenet *index.md* placerat i mappen *DocsSrc\userstories*, som besrkiver hur en spelere skulle spela spelet
+* I projektet GameEngine projektet lägg all logik som rör spelet, även kast av tärning
+* Ett dokument (på svenska eller engelska) som beskriver arkitekturen på projektet, speciellt intressant är hur spelmotor om man skulle önska att använda den i ett annat projekt och hur är koplingen emellan gränssnitt och backend, använn gärna diagrammer
+
+
+## För VG (G + minst 2 för VG)
+Om man gör VG delar skall det på något sätt vara enkelt att se vilka, ett förslag är att skriva det i *index.md* i mappen DocSrc
+
+* Enhetstest av spellogiken i GameEngine
+* Javascript är använt i Viewen för att göra gränssnittet mer interaktivt.
+* Stöd för flera spel på samma server
+* Spelet varje spelare måste befinna sig på olik webbläsare, så att det styrs med cookies vilket spel man är en del av 
+* Unit Test Project (.NET Framework)
+
+* Mail utskick för att informera spelarna, äntligen direkt via SMTP eller en tjänst som SendGrid
+ * Spel start
+ * Ny rond
+
+* Spelmotorn är implementera med SOLID principerna
+* Projektet är ”installerat” på en extern webbserver (eg. Azure), så det går att komma åt den
+* GitHubs ”Code review”-funktion används regelbunden i gruppens projekt
+* Dynamisk uppdatering av spelet, om en spelare i sin webbläsare flyttar på en bricka uppdateras skärmen på alla andra webbläsare 
