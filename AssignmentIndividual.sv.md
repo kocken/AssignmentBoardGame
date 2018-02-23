@@ -69,8 +69,8 @@ Om man gör VG delar skall det på något sätt vara enkelt att se vilka, ett f�
 * Unit Test Project (.NET Framework)
 
 * Mail utskick för att informera spelarna, äntligen direkt via SMTP eller en tjänst som SendGrid
- * Spel start
- * Ny rond
+  * Spel start
+  * Ny rond
 
 * Spelmotorn är implementera med SOLID principerna
 * Projektet är ”installerat” på en extern webbserver (eg. Azure), så det går att komma åt den
