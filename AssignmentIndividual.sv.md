@@ -52,14 +52,14 @@ En använder starter ett spel och en annan använder joiner spelet (oftest i en 
 * Koden kompilera och det går att köra projektet lokalt
 * Ett grafiskt gränssnitt gjort med HTML och Razor, till att rita upp spelbräda och pjäser
 
-## För G (Absolut minimum + minst 2 för G)
+## För G (Absolut minimum + minst 2 av dissa för G)
 
 * 5 user stories skriven (på svenska eller engelska) i Markdown och i dokumentet *index.md* placerat i mappen *DocsSrc\userstories*, som besrkiver hur en spelere skulle spela spelet
 * I projektet GameEngine projektet lägg all logik som rör spelet, även kast av tärning
 * Ett dokument (på svenska eller engelska) som beskriver arkitekturen på projektet, speciellt intressant är hur spelmotor om man skulle önska att använda den i ett annat projekt och hur är koplingen emellan gränssnitt och backend, använn gärna diagrammer
 * Ställa in URL routen så att startsidan till spelet är top level, typ så: http://localhost/
 
-## För VG (G + minst 2 för VG)
+## För VG (G + minst 2 av dissa för VG)
 Om man gör VG delar skall det på något sätt vara enkelt att se vilka, ett förslag är att skriva det i *index.md* i mappen DocSrc
 
 * Enhetstest av spellogiken i GameEngine

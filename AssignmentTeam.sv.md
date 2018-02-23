@@ -70,7 +70,7 @@ Om ni använder någon externa källor (båda kod och annat) ange dom i dokument
 * Som spellera ska gå att joina ett eksisterende spel
 * Spelet varje spelare måste befinna sig på olik webbläsare, så att det styrs med cookies vilket spel man är en del av 
 
-## För VG (G + minst 3 för VG)
+## För VG (G + minst 3 av dissa för VG)
 * Mail utskick för att informera spelarna, äntligen direkt via SMTP eller en tjänst som SendGrid
   * Spel start
   * Ny rond
