@@ -1,6 +1,6 @@
-# Brädspel
+# Brädspel, teams
 
-Uppgiften skall lösas i teams på 3 till 4 studenter (eller alternativt ensamt uppgiften formulerat för teams, men där finns [andra krav](#betygsättning-vid-en-persons-grupp) om önskar att jobba ensamt).
+Uppgiften finns i två varianter, en för individuella och denna för teams av 3-4 personer. 
 
 Uppgiften består av två delar, en programmeringsdel och en dokumentationsdel. 
 
@@ -17,7 +17,6 @@ Det går bra om alla igångvarande spel bara lever i minnet på servern, så dä
 Det går också bra om användarna själv ska uppdatera sidan (tycka F5) för att kunna följa med i spelet.
 
 Spelet skall bara kunna köra på eran lokal dator (localhost), men ni får så klart gärna lägga ut det på en annan server.
-
 
 ## Grundtanken 
 Spelet ska vara en webbsida vart man går in som spellera.
@@ -78,46 +77,6 @@ Om ni använder någon externa källor (båda kod och annat) ange dom i dokument
 
 * En automatisk dokumentation av spelmotorn (gameengine) i DocFx, genererat ur från källkoden
 * En TOC.yml som innehåller alla userstories i mappen DocsSrc\userstories
-* Spelmotorn är implementera med SOLID principerna
-* Projektet är ”installerat” på en extern webbserver (eg. Azure), så det går att komma åt den
-* GitHubs ”Code review”-funktion används regelbunden i gruppens projekt
-* Dynamisk uppdatering av spelet, om en spelare i sin webbläsare flyttar på en bricka uppdateras skärmen på alla andra webbläsare 
-
-
-# Betygsättning vid en persons-grupp
-Det rekomenderas att göra ett simpelt spel som tic-tac-toe, där är gjort en grund för ett tic-tac-toe spel i src mappen, detta kan du i så fall bygga vidre på
-
-En använder starter ett spel och en annan använder joiner spelet (oftest i en annan webbläsere), bara ett spel behöver att kunne köra i taget
-
-## Absolut Minimum
-* Använn Visual Studio solution BoardGame.sln som är placerat i mappen Src, som består av två projekt
-  * ASP.NET Web Application (.NET Framework) - BoardGameWui
-  * Class Library (.NET Framework) - GameEngine
-
-* Koden kompilera och det går att köra projektet lokalt
-* Ett grafiskt gränssnitt gjort med HTML och Razor, till att rita upp spelbräda och pjäser
-
-## För G (Absolut minimum + minst 2 för G)
-
-* 5 user stories skriven (på svenska eller engelska) i Markdown och i dokumentet *index.md* placerat i mappen *DocsSrc\userstories*, som besrkiver hur en spelere skulle spela spelet
-* I projektet GameEngine projektet lägg all logik som rör spelet, även kast av tärning
-* Ett dokument (på svenska eller engelska) som beskriver arkitekturen på projektet, speciellt intressant är hur spelmotor om man skulle önska att använda den i ett annat projekt och hur är koplingen emellan gränssnitt och backend, använn gärna diagrammer
-* Ställa in URL routen så att startsidan till spelet är top level, typ så: http://localhost/
-
-
-## För VG (G + minst 2 för VG)
-Om man gör VG delar skall det på något sätt vara enkelt att se vilka, ett förslag är att skriva det i *index.md* i mappen DocSrc
-
-* Enhetstest av spellogiken i GameEngine
-* Javascript är använt i Viewen för att göra gränssnittet mer interaktivt.
-* Stöd för flera spel på samma server
-* Spelet varje spelare måste befinna sig på olik webbläsare, så att det styrs med cookies vilket spel man är en del av 
-* Unit Test Project (.NET Framework)
-
-* Mail utskick för att informera spelarna, äntligen direkt via SMTP eller en tjänst som SendGrid
- * Spel start
- * Ny rond
-
 * Spelmotorn är implementera med SOLID principerna
 * Projektet är ”installerat” på en extern webbserver (eg. Azure), så det går att komma åt den
 * GitHubs ”Code review”-funktion används regelbunden i gruppens projekt
