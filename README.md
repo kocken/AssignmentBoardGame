@@ -6,7 +6,7 @@ This repository contains what is needed to solve the second assigment in the cou
 
 The assignment can either be done as a team or an individual:
 
-* Individual version, Swedish [AssignmentIndividual.sv.md](assignmentIndividual.sv.md)
+* Individual version, Swedish [AssignmentIndividual.sv.md](AssignmentIndividual.sv.md)
 * Teams version, Swedish [AssignmentTeam.sv.md](assignmentTeam.sv.md)
 
 ## Getting started
