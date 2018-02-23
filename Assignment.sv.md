@@ -1,6 +1,6 @@
 # Brädspel
 
-Uppgiften skall lösas i teams på 3 till 4 studenter (eller [alternativt ensamt](#betygsättning-vid-en-persons-grupp)).
+Uppgiften skall lösas i teams på 3 till 4 studenter (eller alternativt ensamt uppgiften formulerat för teams, men där finns [andra krav](#betygsättning-vid-en-persons-grupp) om önskar att jobba ensamt).
 
 Uppgiften består av två delar, en programmeringsdel och en dokumentationsdel. 
 
@@ -9,20 +9,17 @@ Allt ni gör skall göras i ert GitHub repo (båda kod och dokumentation), som l
 # Programmering
 I detta projekt ska ni implementera ett brädspel, ni får själv välja vilket, men där finns ett Fia bräde (Ludo på engelska) i mappen Content som ni kan använda som grund (CSS och HTML). Den enklast uppgift är ett spel vart man turas om att spela.
 
-Spelet ska implanteras som ett tomt ASP.NET MVC projekt (inte .NET Core) och Razor i kombination med HTML ska användas till att presentera spelet. 
-Eran solution och all kod ska ligga i mappen Src, varje team har bara en kodbas!!
+Spelet ska implanteras i ett tomt ASP.NET MVC projekt (inte .NET Core) och Razor i kombination med HTML ska användas till att presentera spelet, detta projekt är skapat och ligger som en del av BoardGame-solutionen. 
+Kod ska ligga i mappen Src, varje team har bara en kodbas!!
 
-Det går bra om alla igångvarande spel bara lever i minnet, så där är inget krav på att ni skall spara staten i databas eller på disk.
+Det går bra om alla igångvarande spel bara lever i minnet på servern, så där är inget krav på att ni skall spara staten i databas eller på disk.
 
 Det går också bra om användarna själv ska uppdatera sidan (tycka F5) för att kunna följa med i spelet.
 
-Spelet skall bara kunna köra på eran lokal dator (localhost).
+Spelet skall bara kunna köra på eran lokal dator (localhost), men ni får så klart gärna lägga ut det på en annan server.
 
-Start sidan finns på root URLen. Ex: http://localhost/
 
-Varje spel har sin egen unika URL. Ex: http://localhost/123456789
-
-## Grundtanken
+## Grundtanken 
 Spelet ska vara en webbsida vart man går in som spellera.
 
 När man som ny spellera kommer in på sidan ska man kunna välja att starta ett spel eller vara del va ett eksisterende spel, alla eksisterende öppna spel visas som en lista. 
@@ -102,9 +99,10 @@ En använder starter ett spel och en annan använder joiner spelet (oftest i en 
 
 ## För G (Absolut minimum + minst 2 för G)
 
-* 5 user stories skriven (på svenska eller engelska) i Markdown och i dokumenet *index.md* placerat i mappen *DocsSrc\userstories*, som besrkiver hur en spelere skulle spela spelet
+* 5 user stories skriven (på svenska eller engelska) i Markdown och i dokumentet *index.md* placerat i mappen *DocsSrc\userstories*, som besrkiver hur en spelere skulle spela spelet
 * I projektet GameEngine projektet lägg all logik som rör spelet, även kast av tärning
 * Ett dokument (på svenska eller engelska) som beskriver arkitekturen på projektet, speciellt intressant är hur spelmotor om man skulle önska att använda den i ett annat projekt och hur är koplingen emellan gränssnitt och backend, använn gärna diagrammer
+* Ställa in URL routen så att startsidan till spelet är top level, typ så: http://localhost/
 
 
 ## För VG (G + minst 2 för VG)
