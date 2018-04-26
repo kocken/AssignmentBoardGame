@@ -1,8 +1,8 @@
-﻿
+﻿@model BoardGameWui.Models.GameModel
 @{
     Layout = "~/Views/Shared/_Game.cshtml";
     ViewBag.Title = "Tic-Tac-Toe";
 }
 
-<h2>@ViewBag.Title</h2>
-<p>Welcome to my Tic-Tac-Toe game! You can play below.</p>
+<h2>@ViewBag.Title game</h2>
+<p>@Model.Message</p>
