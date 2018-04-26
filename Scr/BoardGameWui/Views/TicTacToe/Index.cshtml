@@ -1,4 +1,4 @@
-﻿@model BoardGameWui.Models.GameModel
+﻿@model BoardGameWui.Models.PlayerModel
 @{
     Layout = "~/Views/Shared/_Game.cshtml";
     ViewBag.Title = "Tic-Tac-Toe";
@@ -15,15 +15,18 @@
     You need to play the game on the same computer, use two different browsers and play on one browser each.
 </p>
 
-
-@if (true)
+@if (Model.Name == null)
 {
     using (Html.BeginForm())
     {
-        @Html.Label("Player name")<br />
+        @Html.Label("Player name ")
         @Html.TextBox("Name")
-        <br /><br />
-
         <button type="submit">Submit</button>
+        <br /><br />
     }
 }
+else
+{
+    <input type="button" value="Leave game" onclick="location.href='@Url.Action("Index", "RemovePlayer")'" />
+}
+<input type="button" value="Reset game" onclick="location.href='@Url.Action("Index", "ResetGame")'" />

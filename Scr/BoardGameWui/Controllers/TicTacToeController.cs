@@ -11,13 +11,14 @@ namespace BoardGameWui.Controllers
     public class TicTacToeController : Controller
     {
 
-        TicTacToe Game = new TicTacToe();
+        private static TicTacToe Game = new TicTacToe();
+
+        private static string CookieName = "PlayerName";
 
         [HttpGet]
         public ActionResult Index()
         {
-            var model = new GameModel();
-            return View(model);
+            return View(GetPlayerModel());
         }
 
         [HttpPost]
@@ -25,16 +26,7 @@ namespace BoardGameWui.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (!Game.GetPlayers().Any(name => name.Equals(model.Name, StringComparison.InvariantCultureIgnoreCase)))
-                {
-                    Game.AddPlayer(model.Name);
-                    StorePlayerCookie(model.Name);
-                    TempData["notice"] = "Player " + model.Name + " joined the game." + " " + string.Join(",", Game.GetPlayers().ToArray());
-                }
-                else
-                {
-                    TempData["notice"] = "Player name \"" + model.Name + "\" is already taken.";
-                }
+                AddPlayer(model.Name);
             }
             else
             {
@@ -43,12 +35,85 @@ namespace BoardGameWui.Controllers
             return RedirectToAction("Index");
         }
 
-        private void StorePlayerCookie(string name)
+        private PlayerModel GetPlayerModel()
         {
-            HttpCookie playerCookie = new HttpCookie("PlayerName");
+            PlayerModel model = new PlayerModel();
+            string playerName = GetPlayerCookieName();
+            if (playerName != null)
+            {
+                if (!Game.GetPlayers().Any(n => n.Equals(playerName, StringComparison.InvariantCultureIgnoreCase))) // if cookie name isn't in game (due to restart)
+                {
+                    if (!Game.IsGameFull())
+                    {
+                        AddPlayer(playerName);
+                    }
+                    else // clear cookie if the game is full and player isn't in it
+                    {
+                        ClearPlayerCookie();
+                    }
+                }
+                if (Game.GetPlayers().Any(n => n.Equals(playerName, StringComparison.InvariantCultureIgnoreCase))) // if cookie name is in game
+                {
+                    model.Name = playerName;
+                }
+            }
+            return model;
+        }
+
+        private void AddPlayer(string name)
+        {
+            if (!Game.GetPlayers().Any(n => n.Equals(name, StringComparison.InvariantCultureIgnoreCase))) // if player name isn't busy
+            {
+                if (!Game.IsGameFull())
+                {
+                    Game.AddPlayer(name);
+                    StorePlayerCookieName(name);
+                    TempData["notice"] = "Player " + name + " joined the game.";
+                }
+                else
+                {
+                    TempData["notice"] = "The max limit of players have been reached. Feel free to reset the game.";
+                }
+            }
+            else
+            {
+                TempData["notice"] = "Player name \"" + name + "\" is already taken.";
+            }
+        }
+
+        private void RemovePlayer(string name)
+        {
+            Game.RemovePlayer(name);
+            ClearPlayerCookie();
+            TempData["notice"] = "Player " + name + " left the game.";
+            RedirectToAction("Index");
+        }
+
+        private void ResetGame()
+        {
+            Game.ResetGame();
+        }
+
+        private string GetPlayerCookieName()
+        {
+            if (Request.Cookies[CookieName] != null)
+            {
+                return Request.Cookies[CookieName].Value;
+            }
+            return null;
+        }
+
+        private void StorePlayerCookieName(string name)
+        {
+            HttpCookie playerCookie = new HttpCookie(CookieName);
             playerCookie.Value = name;
             playerCookie.Expires = DateTime.Now.AddDays(30);
             Response.Cookies.Add(playerCookie);
+        }
+
+        private void ClearPlayerCookie()
+        {
+            Response.Cookies[CookieName].Expires = DateTime.Now.AddDays(-1);
         }
     }
 }

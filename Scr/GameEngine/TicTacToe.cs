@@ -8,6 +8,11 @@ namespace GameEngine
     {
         private List<string> Players = new List<string>();
 
+        public bool IsGameFull()
+        {
+            return Players.Count >= 2;
+        }
+
         public void AddPlayer(string name)
         {
             Players.Add(name);
@@ -21,6 +26,11 @@ namespace GameEngine
         public List<string> GetPlayers()
         {
             return Players;
+        }
+
+        public void ResetGame()
+        {
+            Players.Clear();
         }
     }
 }
