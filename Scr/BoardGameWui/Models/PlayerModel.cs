@@ -6,7 +6,7 @@ using System.Web;
 
 namespace BoardGameWui.Models
 {
-    public class Player
+    public class PlayerModel
     {
         [Required]
         public string Name { get; set; }

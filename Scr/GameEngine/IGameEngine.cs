@@ -6,5 +6,6 @@ namespace GameEngine
 {
     public interface IGameEngine
     {
+
     }
 }

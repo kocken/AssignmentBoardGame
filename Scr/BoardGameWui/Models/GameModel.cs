@@ -7,6 +7,6 @@ namespace BoardGameWui.Models
 {
     public class GameModel
     {
-        public string Message { get; set; }
+        public bool JoinedGame { get; set; }
     }
 }

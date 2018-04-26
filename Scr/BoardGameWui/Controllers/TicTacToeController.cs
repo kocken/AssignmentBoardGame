@@ -1,4 +1,5 @@
 ﻿using BoardGameWui.Models;
+using GameEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,22 +11,30 @@ namespace BoardGameWui.Controllers
     public class TicTacToeController : Controller
     {
 
+        TicTacToe Game = new TicTacToe();
+
         [HttpGet]
         public ActionResult Index()
         {
             var model = new GameModel();
-            model.Message = "Welcome to my Tic-Tac-Toe game. Play below with a friend and try get three in a row! " +
-                "You need to play the game on the same computer, use two different browsers and play on one browser each.";
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Index(Player model)
+        public ActionResult Index(PlayerModel model)
         {
             if (ModelState.IsValid)
             {
-                AddPlayer(model.Name);
-                TempData["notice"] = "Player " + model.Name + " joined the game.";
+                if (!Game.GetPlayers().Any(name => name.Equals(model.Name, StringComparison.InvariantCultureIgnoreCase)))
+                {
+                    Game.AddPlayer(model.Name);
+                    StorePlayerCookie(model.Name);
+                    TempData["notice"] = "Player " + model.Name + " joined the game." + " " + string.Join(",", Game.GetPlayers().ToArray());
+                }
+                else
+                {
+                    TempData["notice"] = "Player name \"" + model.Name + "\" is already taken.";
+                }
             }
             else
             {
@@ -34,9 +43,12 @@ namespace BoardGameWui.Controllers
             return RedirectToAction("Index");
         }
 
-        private void AddPlayer(string name)
+        private void StorePlayerCookie(string name)
         {
-
+            HttpCookie playerCookie = new HttpCookie("PlayerName");
+            playerCookie.Value = name;
+            playerCookie.Expires = DateTime.Now.AddDays(30);
+            Response.Cookies.Add(playerCookie);
         }
     }
 }
