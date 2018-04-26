@@ -27,6 +27,7 @@
 }
 else
 {
-    <input type="button" value="Leave game" onclick="location.href='@Url.Action("Index", "RemovePlayer")'" />
+    //<input type="button" value="Leave game" onclick="location.href='@Url.Action("Index", "RemovePlayer")'" />
+    @Html.ActionLink("Leave game", "RemovePlayer", new { name = Model.Name })  
 }
 <input type="button" value="Reset game" onclick="location.href='@Url.Action("Index", "ResetGame")'" />

@@ -35,6 +35,21 @@ namespace BoardGameWui.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult RemovePlayer(string name)
+        {
+            Game.RemovePlayer(name);
+            ClearPlayerCookie();
+            TempData["notice"] = "Player " + name + " left the game.";
+            return View();
+        }
+
+        public ActionResult ResetGame()
+        {
+            Game.ResetGame();
+            TempData["notice"] = "The game was reset.";
+            return View();
+        }
+
         private PlayerModel GetPlayerModel()
         {
             PlayerModel model = new PlayerModel();
@@ -79,19 +94,6 @@ namespace BoardGameWui.Controllers
             {
                 TempData["notice"] = "Player name \"" + name + "\" is already taken.";
             }
-        }
-
-        private void RemovePlayer(string name)
-        {
-            Game.RemovePlayer(name);
-            ClearPlayerCookie();
-            TempData["notice"] = "Player " + name + " left the game.";
-            RedirectToAction("Index");
-        }
-
-        private void ResetGame()
-        {
-            Game.ResetGame();
         }
 
         private string GetPlayerCookieName()
