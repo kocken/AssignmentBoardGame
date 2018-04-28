@@ -15,14 +15,20 @@ namespace BoardGameWui.Controllers
 
         private static string CookieName = "PlayerName";
 
-        [HttpGet]
-        public ActionResult Lobby()
+        public ActionResult Index()
         {
-            return View(GetPlayerModel());
+            PlayerModel model = GetPlayerModel();
+            if (model.Name != null)
+            {
+                return View("Game", model);
+            }
+            else
+            {
+                return View("Lobby");
+            }
         }
 
-        [HttpPost]
-        public ActionResult Lobby(PlayerModel model)
+        public ActionResult JoinLobby(PlayerModel model)
         {
             if (ModelState.IsValid)
             {
@@ -32,7 +38,7 @@ namespace BoardGameWui.Controllers
             {
                 TempData["notice"] = "You need to enter a valid name.";
             }
-            return RedirectToAction("Lobby");
+            return RedirectToAction("Index");
         }
 
         public ActionResult LeaveGame(PlayerModel model)
@@ -40,14 +46,14 @@ namespace BoardGameWui.Controllers
             Game.RemovePlayer(model.Name);
             ClearPlayerCookie();
             TempData["notice"] = "Player \"" + model.Name + "\" left the game.";
-            return RedirectToAction("Lobby");
+            return RedirectToAction("Index");
         }
 
         public ActionResult ResetGame()
         {
             Game.ResetGame();
             TempData["notice"] = "The game was reset.";
-            return RedirectToAction("Lobby");
+            return RedirectToAction("Index");
         }
 
         private PlayerModel GetPlayerModel()
