@@ -16,13 +16,13 @@ namespace BoardGameWui.Controllers
         private static string CookieName = "PlayerName";
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Lobby()
         {
             return View(GetPlayerModel());
         }
 
         [HttpPost]
-        public ActionResult Index(PlayerModel model)
+        public ActionResult Lobby(PlayerModel model)
         {
             if (ModelState.IsValid)
             {
@@ -32,22 +32,22 @@ namespace BoardGameWui.Controllers
             {
                 TempData["notice"] = "You need to enter a valid name.";
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Lobby");
         }
 
         public ActionResult LeaveGame(PlayerModel model)
         {
             Game.RemovePlayer(model.Name);
             ClearPlayerCookie();
-            TempData["notice"] = "Player " + model.Name + " left the game.";
-            return View();
+            TempData["notice"] = "Player \"" + model.Name + "\" left the game.";
+            return RedirectToAction("Lobby");
         }
 
         public ActionResult ResetGame()
         {
             Game.ResetGame();
             TempData["notice"] = "The game was reset.";
-            return View();
+            return RedirectToAction("Lobby");
         }
 
         private PlayerModel GetPlayerModel()
@@ -77,22 +77,27 @@ namespace BoardGameWui.Controllers
 
         private void AddPlayer(string name)
         {
+            string startStr = "";
+            if (TempData["notice"] != null)
+            {
+                startStr = TempData["notice"] + " " + "<br />"; // will be used if the game was reset and player has a cookie, to show both reset + join messages
+            }
             if (!Game.GetPlayers().Any(n => n.Equals(name, StringComparison.InvariantCultureIgnoreCase))) // if player name isn't taken
             {
                 if (!Game.IsGameFull())
                 {
                     Game.AddPlayer(name);
                     StorePlayerCookie(name);
-                    TempData["notice"] = "Player " + name + " joined the game.";
+                    TempData["notice"] = startStr + "Player \"" + name + "\" joined the game.";
                 }
                 else
                 {
-                    TempData["notice"] = "The max limit of players have been reached. Feel free to reset the game.";
+                    TempData["notice"] = startStr + "The max limit of players have been reached. Feel free to reset the game.";
                 }
             }
             else
             {
-                TempData["notice"] = "Player name \"" + name + "\" is already taken.";
+                TempData["notice"] = startStr + "Player name \"" + name + "\" is already taken.";
             }
         }
 

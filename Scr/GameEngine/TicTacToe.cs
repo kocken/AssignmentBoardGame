@@ -15,7 +15,14 @@ namespace GameEngine
 
         public void AddPlayer(string name)
         {
-            Players.Add(name);
+            if (!IsGameFull())
+            {
+                Players.Add(name);
+            }
+            else
+            {
+                throw new ArgumentException("Game is already full");
+            }
         }
 
         public void RemovePlayer(string name)

@@ -134,7 +134,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
-    <Content Include="Views\TicTacToe\Index.cshtml" />
+    <Content Include="Views\TicTacToe\Lobby.cshtml" />
     <Content Include="Views\Shared\_Game.cshtml" />
   </ItemGroup>
   <ItemGroup>
