@@ -1,4 +1,5 @@
-﻿@{
+﻿@model BoardGameWui.Models.GameSession
+@{
     Layout = "~/Views/Shared/_Game.cshtml";
     ViewBag.Title = "Tic-Tac-Toe lobby";
 }
@@ -10,19 +11,29 @@
 
 <h2>@ViewBag.Title</h2>
 <p>
-    Welcome to my Tic-Tac-Toe game. Join and play below with a friend and try get three in a row!<br />
+    Welcome to my Tic-Tac-Toe game! Join and play below with a friend and try get three in a row!<br /><br />
     You need to play the game on the same computer; use two different browsers and play on one browser each.<br />
-    Update the gameboard progress by updating the site (F5).<br />
+    Update the game by updating the site (F5).<br />
 </p>
 
-<h3>
-    Join the game below<br />
-</h3>
-@using (Html.BeginForm("JoinLobby", "TicTacToe"))
+@if (Model.PlayerName == null)
 {
-    @Html.Label("Player name ")
-    @Html.TextBox("Name")
-    <button type="submit">Submit</button>
-    <br /><br />
+    <h3>
+        Join the game below<br />
+    </h3>
+    using (Html.BeginForm("JoinLobby", "TicTacToe"))
+    {
+        @Html.Label("Player name ")
+        @Html.TextBox("PlayerName")
+        <button type="submit">Submit</button>
+        <br /><br />
+    }
+}
+else
+{
+    <h3>
+        Waiting for opponent to join<br />
+    </h3>
+    <input type="button" value="Leave game" onclick="location.href='@Url.Action("LeaveGame", Model)'" />
 }
 <input type="button" value="Reset game" onclick="location.href='@Url.Action("ResetGame")'" />

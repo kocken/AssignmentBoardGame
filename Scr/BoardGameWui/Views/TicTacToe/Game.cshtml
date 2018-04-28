@@ -1,4 +1,4 @@
-﻿@model BoardGameWui.Models.PlayerModel
+﻿@model BoardGameWui.Models.GameSession
 @{
     Layout = "~/Views/Shared/_Game.cshtml";
     ViewBag.Title = "Tic-Tac-Toe game";
@@ -11,9 +11,9 @@
 
 <h2>@ViewBag.Title</h2>
 <p>
-    Welcome to my Tic-Tac-Toe game. Play below with a friend and try get three in a row!<br />
+    Welcome to my Tic-Tac-Toe game! Play below and try get three in a row!<br /><br />
     You need to play the game on the same computer; use two different browsers and play on one browser each.<br />
-    Update the gameboard progress by updating the site (F5).<br />
+    Update the game by updating the site (F5).<br />
 </p>
 
 <input type="button" value="Leave game" onclick="location.href='@Url.Action("LeaveGame", Model)'" />

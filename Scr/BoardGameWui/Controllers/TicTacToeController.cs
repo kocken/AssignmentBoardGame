@@ -17,22 +17,30 @@ namespace BoardGameWui.Controllers
 
         public ActionResult Index()
         {
-            PlayerModel model = GetPlayerModel();
-            if (model.Name != null)
+            GameSession model = GetPlayerModel();
+            if (model.PlayerName != null)
             {
-                return View("Game", model);
+                model.OpponentName = Game.GetOpponentName(model.PlayerName);
+                if (model.OpponentName != null)
+                {
+                    return View("Game", model);
+                }
+                else
+                {
+                    return View("Lobby", model);
+                }
             }
             else
             {
-                return View("Lobby");
+                return View("Lobby", model);
             }
         }
 
-        public ActionResult JoinLobby(PlayerModel model)
+        public ActionResult JoinLobby(GameSession model)
         {
             if (ModelState.IsValid)
             {
-                AddPlayer(model.Name);
+                AddPlayer(model.PlayerName);
             }
             else
             {
@@ -41,11 +49,11 @@ namespace BoardGameWui.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult LeaveGame(PlayerModel model)
+        public ActionResult LeaveGame(GameSession model)
         {
-            Game.RemovePlayer(model.Name);
+            Game.RemovePlayer(model.PlayerName);
             ClearPlayerCookie();
-            TempData["notice"] = "Player \"" + model.Name + "\" left the game.";
+            TempData["notice"] = "Player \"" + model.PlayerName + "\" left the game.";
             return RedirectToAction("Index");
         }
 
@@ -56,9 +64,9 @@ namespace BoardGameWui.Controllers
             return RedirectToAction("Index");
         }
 
-        private PlayerModel GetPlayerModel()
+        private GameSession GetPlayerModel()
         {
-            PlayerModel model = new PlayerModel();
+            GameSession model = new GameSession();
             string playerName = GetPlayerCookieName();
             if (playerName != null)
             {
@@ -75,7 +83,7 @@ namespace BoardGameWui.Controllers
                 }
                 if (Game.GetPlayers().Any(n => n.Equals(playerName, StringComparison.InvariantCultureIgnoreCase))) // if cookie name is in game
                 {
-                    model.Name = playerName;
+                    model.PlayerName = playerName;
                 }
             }
             return model;

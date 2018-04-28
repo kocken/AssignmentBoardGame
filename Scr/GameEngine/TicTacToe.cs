@@ -8,6 +8,18 @@ namespace GameEngine
     {
         private List<string> Players = new List<string>();
 
+        public string GetOpponentName(string playerName)
+        {
+            foreach (string name in Players)
+            {
+                if (!name.Equals(playerName))
+                {
+                    return name;
+                }
+            }
+            return null;
+        }
+
         public bool IsGameFull()
         {
             return Players.Count >= 2;

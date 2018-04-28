@@ -6,9 +6,11 @@ using System.Web;
 
 namespace BoardGameWui.Models
 {
-    public class PlayerModel
+    public class GameSession
     {
         [Required]
-        public string Name { get; set; }
+        public string PlayerName { get; set; }
+
+        public string OpponentName { get; set; }
     }
 }
