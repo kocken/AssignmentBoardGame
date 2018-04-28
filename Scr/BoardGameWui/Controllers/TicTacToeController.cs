@@ -10,7 +10,6 @@ namespace BoardGameWui.Controllers
 {
     public class TicTacToeController : Controller
     {
-
         private static TicTacToe GameEngine = new TicTacToe();
 
         private static string CookieName = "PlayerName";
