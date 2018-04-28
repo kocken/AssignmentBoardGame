@@ -27,6 +27,11 @@ namespace GameEngine
             }
         }
 
+        public bool IsPlayerOne(string name)
+        {
+            return name == Players[0];
+        }
+
         public TicTacToe()
         {
             ResetBoard();

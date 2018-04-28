@@ -24,7 +24,7 @@ namespace BoardGameWui.Controllers
                 if (session.OpponentName != null)
                 {
                     session.GameTiles = GameEngine.GameTiles;
-                    session.MyTurn = GameEngine.MovesExecuted % 2 == (session.PlayerName == GameEngine.Players[0] ? 0 : 1);
+                    session.MyTurn = GameEngine.MovesExecuted % 2 == (GameEngine.IsPlayerOne(session.PlayerName) ? 0 : 1);
                     return View("Game", session);
                 }
                 else
@@ -51,14 +51,6 @@ namespace BoardGameWui.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult LeaveGame(GameSession session)
-        {
-            GameEngine.RemovePlayer(session.PlayerName);
-            ClearPlayerCookie();
-            TempData["notice"] = "Player \"" + session.PlayerName + "\" left the game.";
-            return RedirectToAction("Index");
-        }
-
         public ActionResult ResetGame()
         {
             GameEngine.ResetGame();
@@ -66,9 +58,17 @@ namespace BoardGameWui.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult LeaveGame(string playerName)
+        {
+            GameEngine.RemovePlayer(playerName);
+            ClearPlayerCookie();
+            TempData["notice"] = "Player \"" + playerName + "\" left the game.";
+            return RedirectToAction("Index");
+        }
+
         public ActionResult PickTile(string playerName, int index)
         {
-            GameEngine.PlaceMark(GameEngine.Players[0] == playerName ? Mark.X : Mark.O, index);
+            GameEngine.PlaceMark(GameEngine.IsPlayerOne(playerName) ? Mark.X : Mark.O, index);
             return RedirectToAction("Index");
         }
 

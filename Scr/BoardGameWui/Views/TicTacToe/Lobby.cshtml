@@ -29,6 +29,6 @@
 else
 {
     <h3>Waiting for opponent to join<br /></h3>
-    <input type="button" value="Leave game" onclick="location.href='@Url.Action("LeaveGame", Model)'" />
+    <input type="button" value="Leave game" onclick="location.href='@Url.Action("LeaveGame", new { Model.PlayerName })'" />
 }
 <input type="button" value="Reset game" onclick="location.href='@Url.Action("ResetGame")'" />
