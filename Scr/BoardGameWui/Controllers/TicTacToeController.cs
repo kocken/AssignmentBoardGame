@@ -35,11 +35,11 @@ namespace BoardGameWui.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult RemovePlayer(string name)
+        public ActionResult LeaveGame(PlayerModel model)
         {
-            Game.RemovePlayer(name);
+            Game.RemovePlayer(model.Name);
             ClearPlayerCookie();
-            TempData["notice"] = "Player " + name + " left the game.";
+            TempData["notice"] = "Player " + model.Name + " left the game.";
             return View();
         }
 
@@ -77,12 +77,12 @@ namespace BoardGameWui.Controllers
 
         private void AddPlayer(string name)
         {
-            if (!Game.GetPlayers().Any(n => n.Equals(name, StringComparison.InvariantCultureIgnoreCase))) // if player name isn't busy
+            if (!Game.GetPlayers().Any(n => n.Equals(name, StringComparison.InvariantCultureIgnoreCase))) // if player name isn't taken
             {
                 if (!Game.IsGameFull())
                 {
                     Game.AddPlayer(name);
-                    StorePlayerCookieName(name);
+                    StorePlayerCookie(name);
                     TempData["notice"] = "Player " + name + " joined the game.";
                 }
                 else
@@ -105,7 +105,7 @@ namespace BoardGameWui.Controllers
             return null;
         }
 
-        private void StorePlayerCookieName(string name)
+        private void StorePlayerCookie(string name)
         {
             HttpCookie playerCookie = new HttpCookie(CookieName);
             playerCookie.Value = name;
@@ -115,7 +115,10 @@ namespace BoardGameWui.Controllers
 
         private void ClearPlayerCookie()
         {
-            Response.Cookies[CookieName].Expires = DateTime.Now.AddDays(-1);
+            if (Request.Cookies[CookieName] != null)
+            {
+                Response.Cookies[CookieName].Expires = DateTime.Now.AddDays(-1);
+            }
         }
     }
 }
