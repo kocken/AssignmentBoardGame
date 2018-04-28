@@ -23,6 +23,7 @@ namespace BoardGameWui.Controllers
                 session.OpponentName = Game.GetOpponentName(session.PlayerName);
                 if (session.OpponentName != null)
                 {
+                    session.GameTiles = Game.GetGameTiles();
                     return View("Game", session);
                 }
                 else

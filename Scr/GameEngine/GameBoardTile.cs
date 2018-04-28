@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GameEngine
 {
-    class GameBoardTile
+    public class GameBoardTile
     {
         public Point Coordinate { get; set; }
         public string OccupiedBy { get; set; }

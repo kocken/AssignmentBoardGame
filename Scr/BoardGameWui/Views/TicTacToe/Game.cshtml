@@ -13,8 +13,16 @@
 <p>
     Welcome to my Tic-Tac-Toe game! Play below and try get three in a row!<br /><br />
     You need to play the game on the same computer; use two different browsers and play on one browser each.<br />
-    Update the game by updating the site (F5).<br />
+    Update the game by refreshing the site (F5).<br />
 </p>
 
 <input type="button" value="Leave game" onclick="location.href='@Url.Action("LeaveGame", Model)'" />
-<input type="button" value="Reset game" onclick="location.href='@Url.Action("ResetGame")'" />
+<input type="button" value="Reset game" onclick="location.href='@Url.Action("ResetGame")'" /><br /><br />
+@for (int i = 1; Model.GameTiles.Length >= i; i++)
+{
+    <input type="button" class="boardbutton" value="X" onclick="location.href='@Url.Action("LeaveGame", Model)'" />
+    if (i % 3 == 0)
+    {
+        <br />
+    }
+}

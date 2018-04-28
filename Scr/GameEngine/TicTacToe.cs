@@ -7,9 +7,9 @@ namespace GameEngine
 {
     public class TicTacToe : IGameEngine
     {
-        private List<string> Players = new List<string>();
-
         private GameBoardTile[] GameTiles = new GameBoardTile[9];
+
+        private List<string> Players = new List<string>();
 
         public TicTacToe()
         {
@@ -17,26 +17,19 @@ namespace GameEngine
             {
                 for (int y = 0; 3 > y; y++)
                 {
-                    GameTiles[x+y] = new GameBoardTile(new Point(x, y), null);
+                    GameTiles[x + y] = new GameBoardTile(new Point(x, y), null);
                 }
             }
         }
 
-        public string GetOpponentName(string playerName)
+        public GameBoardTile[] GetGameTiles()
         {
-            foreach (string name in Players)
-            {
-                if (!name.Equals(playerName))
-                {
-                    return name;
-                }
-            }
-            return null;
+            return GameTiles;
         }
 
-        public bool IsGameFull()
+        public List<string> GetPlayers()
         {
-            return Players.Count >= 2;
+            return Players;
         }
 
         public void AddPlayer(string name)
@@ -56,14 +49,27 @@ namespace GameEngine
             Players.Remove(name);
         }
 
-        public List<string> GetPlayers()
+        public bool IsGameFull()
         {
-            return Players;
+            return Players.Count >= 2;
         }
 
         public void ResetGame()
         {
             Players.Clear();
         }
+
+        public string GetOpponentName(string playerName)
+        {
+            foreach (string name in Players)
+            {
+                if (!name.Equals(playerName))
+                {
+                    return name;
+                }
+            }
+            return null;
+        }
+
     }
 }

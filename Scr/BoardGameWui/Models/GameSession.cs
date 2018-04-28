@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameEngine;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -14,5 +15,7 @@ namespace BoardGameWui.Models
         public string OpponentName { get; set; }
 
         public bool MyTurn { get; set; }
+
+        public GameBoardTile[] GameTiles { get; set; }
     }
 }
