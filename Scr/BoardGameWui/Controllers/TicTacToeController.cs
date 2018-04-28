@@ -67,7 +67,7 @@ namespace BoardGameWui.Controllers
 
         public ActionResult PickTile(string playerName, int index)
         {
-            GameEngine.PlaceMark(GameEngine.GetPlayers()[0] == playerName ? Mark.Cross : Mark.Circle, index);
+            GameEngine.PlaceMark(GameEngine.GetPlayers()[0] == playerName ? Mark.X : Mark.O, index);
             return RedirectToAction("Index");
         }
 

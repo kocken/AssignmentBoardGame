@@ -6,6 +6,6 @@ namespace GameEngine
 {
     public enum Mark
     {
-        Cross, Circle
+        X, O, Available
     }
 }

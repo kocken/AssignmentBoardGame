@@ -18,7 +18,7 @@ namespace GameEngine
 
         public void PlaceMark(Mark mark, int index)
         {
-            GameTiles[index].Mark = mark == Mark.Circle ? "O" : "X";
+            GameTiles[index].Mark = mark;
         }
 
         public GameBoardTile[] GetGameTiles()
@@ -78,7 +78,7 @@ namespace GameEngine
             {
                 for (int y = 0; 3 > y; y++)
                 {
-                    GameTiles[index] = new GameBoardTile(new Point(x, y), "");
+                    GameTiles[index] = new GameBoardTile(new Point(x, y), Mark.Available);
                     index++;
                 }
             }

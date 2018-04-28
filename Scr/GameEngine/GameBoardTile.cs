@@ -8,9 +8,9 @@ namespace GameEngine
     public class GameBoardTile
     {
         public Point Coordinate { get; set; }
-        public string Mark { get; set; }
+        public Mark Mark { get; set; }
 
-        public GameBoardTile(Point coordinate, string mark)
+        public GameBoardTile(Point coordinate, Mark mark)
         {
             this.Coordinate = coordinate;
             this.Mark = mark;
