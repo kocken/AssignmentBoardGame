@@ -7,28 +7,35 @@ namespace GameEngine
 {
     public class TicTacToe : IGameEngine
     {
-        private GameBoardTile[] GameTiles = new GameBoardTile[9];
+        public GameBoardTile[] GameTiles { get; private set; }
 
-        private List<string> Players = new List<string>();
+        public List<string> Players { get; private set; }
+
+        public int MovesExecuted
+        {
+            get
+            {
+                int moves = 0;
+                foreach (GameBoardTile tile in GameTiles)
+                {
+                    if (tile.Mark != Mark.Available)
+                    {
+                        moves++;
+                    }
+                }
+                return moves;
+            }
+        }
 
         public TicTacToe()
         {
             ResetBoard();
+            Players = new List<string>();
         }
 
         public void PlaceMark(Mark mark, int index)
         {
             GameTiles[index].Mark = mark;
-        }
-
-        public GameBoardTile[] GetGameTiles()
-        {
-            return GameTiles;
-        }
-
-        public List<string> GetPlayers()
-        {
-            return Players;
         }
 
         public void AddPlayer(string name)
@@ -73,6 +80,7 @@ namespace GameEngine
 
         private void ResetBoard()
         {
+            GameTiles = new GameBoardTile[9];
             int index = 0;
             for (int x = 0; 3 > x; x++)
             {

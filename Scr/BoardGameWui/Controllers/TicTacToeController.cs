@@ -23,7 +23,8 @@ namespace BoardGameWui.Controllers
                 session.OpponentName = GameEngine.GetOpponentName(session.PlayerName);
                 if (session.OpponentName != null)
                 {
-                    session.GameTiles = GameEngine.GetGameTiles();
+                    session.GameTiles = GameEngine.GameTiles;
+                    session.MyTurn = GameEngine.MovesExecuted % 2 == (session.PlayerName == GameEngine.Players[0] ? 0 : 1);
                     return View("Game", session);
                 }
                 else
@@ -67,7 +68,7 @@ namespace BoardGameWui.Controllers
 
         public ActionResult PickTile(string playerName, int index)
         {
-            GameEngine.PlaceMark(GameEngine.GetPlayers()[0] == playerName ? Mark.X : Mark.O, index);
+            GameEngine.PlaceMark(GameEngine.Players[0] == playerName ? Mark.X : Mark.O, index);
             return RedirectToAction("Index");
         }
 
@@ -77,7 +78,7 @@ namespace BoardGameWui.Controllers
             string playerName = GetPlayerCookieName();
             if (playerName != null)
             {
-                if (!GameEngine.GetPlayers().Any(n => n.Equals(playerName, StringComparison.InvariantCultureIgnoreCase))) // if cookie name isn't in game (due to restart)
+                if (!GameEngine.Players.Any(n => n.Equals(playerName, StringComparison.InvariantCultureIgnoreCase))) // if cookie name isn't in game (due to restart)
                 {
                     if (!GameEngine.IsGameFull())
                     {
@@ -88,7 +89,7 @@ namespace BoardGameWui.Controllers
                         ClearPlayerCookie();
                     }
                 }
-                if (GameEngine.GetPlayers().Any(n => n.Equals(playerName, StringComparison.InvariantCultureIgnoreCase))) // if cookie name is in game
+                if (GameEngine.Players.Any(n => n.Equals(playerName, StringComparison.InvariantCultureIgnoreCase))) // if cookie name is in game
                 {
                     session.PlayerName = playerName;
                 }
@@ -103,7 +104,7 @@ namespace BoardGameWui.Controllers
             {
                 startStr = TempData["notice"] + " " + "<br />"; // will be used if the game was reset and player has a cookie, to show both reset + join messages
             }
-            if (!GameEngine.GetPlayers().Any(n => n.Equals(name, StringComparison.InvariantCultureIgnoreCase))) // if player name isn't taken
+            if (!GameEngine.Players.Any(n => n.Equals(name, StringComparison.InvariantCultureIgnoreCase))) // if player name isn't taken
             {
                 if (!GameEngine.IsGameFull())
                 {
