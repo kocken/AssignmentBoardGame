@@ -17,12 +17,29 @@
 </p>
 
 <input type="button" value="Leave game" onclick="location.href='@Url.Action("LeaveGame", Model)'" />
-<input type="button" value="Reset game" onclick="location.href='@Url.Action("ResetGame")'" /><br /><br />
+<input type="button" value="Reset game" onclick="location.href='@Url.Action("ResetGame")'" />
+
+@if (@Model.MyTurn)
+{
+    <h3>It's your turn!</h3>
+}
+else
+{
+    <h3>It's @Model.OpponentName's turn.</h3>
+}
+
 @for (int i = 0; Model.GameTiles.Length > i; i++)
 {
     if (Model.GameTiles[i].Mark.ToString().Equals("Available"))
     {
-        <input type="button" class="boardbutton" value="&nbsp" onclick="location.href='@Url.Action("PickTile", new { @playerName = Model.PlayerName, @index = i })'" />
+        if (@Model.MyTurn)
+        {
+            <input type="button" class="boardbutton" value="&nbsp" onclick="location.href='@Url.Action("PickTile", new { @playerName = Model.PlayerName, @index = i })'" />
+        }
+        else
+        {
+            <input type="button" class="boardbutton" value="&nbsp" />
+        }
     }
     else
     {

@@ -18,22 +18,17 @@
 
 @if (Model.PlayerName == null)
 {
-    <h3>
-        Join the game below<br />
-    </h3>
+    <h3>Join the game below<br /></h3>
     using (Html.BeginForm("JoinLobby", "TicTacToe"))
     {
         @Html.Label("Player name ")
         @Html.TextBox("PlayerName")
-        <button type="submit">Submit</button>
-        <br /><br />
+        <button type="submit">Submit</button><br /><br />
     }
 }
 else
 {
-    <h3>
-        Waiting for opponent to join<br />
-    </h3>
+    <h3>Waiting for opponent to join<br /></h3>
     <input type="button" value="Leave game" onclick="location.href='@Url.Action("LeaveGame", Model)'" />
 }
 <input type="button" value="Reset game" onclick="location.href='@Url.Action("ResetGame")'" />
