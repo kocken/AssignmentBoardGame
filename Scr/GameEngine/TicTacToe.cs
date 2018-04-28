@@ -1,12 +1,26 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace GameEngine
 {
     public class TicTacToe : IGameEngine
     {
         private List<string> Players = new List<string>();
+
+        private GameBoardTile[] GameTiles = new GameBoardTile[9];
+
+        public TicTacToe()
+        {
+            for (int x = 0; 3 > x; x++)
+            {
+                for (int y = 0; 3 > y; y++)
+                {
+                    GameTiles[x+y] = new GameBoardTile(new Point(x, y), null);
+                }
+            }
+        }
 
         public string GetOpponentName(string playerName)
         {

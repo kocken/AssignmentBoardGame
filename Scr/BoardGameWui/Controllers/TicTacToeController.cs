@@ -17,22 +17,22 @@ namespace BoardGameWui.Controllers
 
         public ActionResult Index()
         {
-            GameSession model = GetPlayerModel();
-            if (model.PlayerName != null)
+            GameSession session = GetPlayer();
+            if (session.PlayerName != null)
             {
-                model.OpponentName = Game.GetOpponentName(model.PlayerName);
-                if (model.OpponentName != null)
+                session.OpponentName = Game.GetOpponentName(session.PlayerName);
+                if (session.OpponentName != null)
                 {
-                    return View("Game", model);
+                    return View("Game", session);
                 }
                 else
                 {
-                    return View("Lobby", model);
+                    return View("Lobby", session);
                 }
             }
             else
             {
-                return View("Lobby", model);
+                return View("Lobby", session);
             }
         }
 
@@ -64,7 +64,7 @@ namespace BoardGameWui.Controllers
             return RedirectToAction("Index");
         }
 
-        private GameSession GetPlayerModel()
+        private GameSession GetPlayer()
         {
             GameSession model = new GameSession();
             string playerName = GetPlayerCookieName();

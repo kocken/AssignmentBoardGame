@@ -12,5 +12,7 @@ namespace BoardGameWui.Models
         public string PlayerName { get; set; }
 
         public string OpponentName { get; set; }
+
+        public bool MyTurn { get; set; }
     }
 }
