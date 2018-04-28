@@ -65,8 +65,9 @@ namespace BoardGameWui.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult PickTile(GameSession session, int? id)
+        public ActionResult PickTile(GameSession session, int index)
         {
+            GameEngine.PlaceMark(Mark.Cross, index);
             return RedirectToAction("Index");
         }
 

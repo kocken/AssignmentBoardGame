@@ -8,12 +8,12 @@ namespace GameEngine
     public class GameBoardTile
     {
         public Point Coordinate { get; set; }
-        public string OccupiedBy { get; set; }
+        public string Mark { get; set; }
 
-        public GameBoardTile(Point coordinate, string occupiedBy)
+        public GameBoardTile(Point coordinate, string mark)
         {
             this.Coordinate = coordinate;
-            this.OccupiedBy = occupiedBy;
+            this.Mark = mark;
         }
     }
 }

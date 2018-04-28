@@ -13,12 +13,26 @@ namespace GameEngine
 
         public TicTacToe()
         {
+            int index = 0;
             for (int x = 0; 3 > x; x++)
             {
                 for (int y = 0; 3 > y; y++)
                 {
-                    GameTiles[x + y] = new GameBoardTile(new Point(x, y), "");
+                    GameTiles[index] = new GameBoardTile(new Point(x, y), "");
+                    index++;
                 }
+            }
+        }
+
+        public void PlaceMark(Mark mark, int index)
+        {
+            if (mark == Mark.Circle)
+            {
+                GameTiles[index].Mark = "O";
+            }
+            else
+            {
+                GameTiles[index].Mark = "X";
             }
         }
 
