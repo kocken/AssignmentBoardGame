@@ -26,6 +26,18 @@ namespace BoardGameWui
             );
 
             routes.MapRoute(
+                name: "Game won",
+                url: "TicTacToe/GameOver",
+                defaults: new { controller = "TicTacToe", action = "Index" }
+            );
+
+            routes.MapRoute(
+                name: "Game ended",
+                url: "TicTacToe/GameDraw",
+                defaults: new { controller = "TicTacToe", action = "Index" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "TicTacToe", action = "Index", id = UrlParameter.Optional }

@@ -11,6 +11,8 @@ namespace GameEngine
 
         public List<string> Players { get; private set; }
 
+        public string LastActivePlayer;
+
         public int MovesExecuted
         {
             get
@@ -33,15 +35,38 @@ namespace GameEngine
             Players = new List<string>();
         }
 
-        public void PlaceMark(Mark mark, int index)
+        public void PlaceMark(string name, Mark mark, int index)
         {
-            GameTiles[index].Mark = mark;
+            LastActivePlayer = name;
+            GameTiles[index].Mark = mark;  
         }
 
         public bool IsGameFinished() // if three of the same mark is in a line
         {
+            foreach (GameBoardTile tile in GameTiles)
+            {
+                if (tile.Mark == Mark.Available)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public bool IsPlayerOne(string name)
+        {
+            return name == Players[0];
+        }
+
+        public bool IsGameFull()
+        {
+            return Players.Count >= 2;
+        }
+
+        public bool IsGameWon() // if three of the same mark is in a line
+        {
             if (MarkAt(1, 1) != Mark.Available && // if diagonal line with three in a row of the same mark
-                (MarkAt(1, 1) == MarkAt(0, 2) && MarkAt(1, 1) == MarkAt(2, 0) || MarkAt(1, 1) == MarkAt(2, 0) && MarkAt(1, 1) == MarkAt(0, 2)))
+                (MarkAt(1, 1) == MarkAt(0, 2) && MarkAt(1, 1) == MarkAt(2, 0) || MarkAt(1, 1) == MarkAt(2, 2) && MarkAt(1, 1) == MarkAt(0, 0)))
             {
                 return true;
             }
@@ -68,11 +93,6 @@ namespace GameEngine
             return Mark.Available;
         }
 
-        public bool IsPlayerOne(string name)
-        {
-            return name == Players[0];
-        }
-
         public void AddPlayer(string name)
         {
             if (!IsGameFull())
@@ -88,11 +108,6 @@ namespace GameEngine
         public void RemovePlayer(string name)
         {
             Players.Remove(name);
-        }
-
-        public bool IsGameFull()
-        {
-            return Players.Count >= 2;
         }
 
         public void ResetGame()

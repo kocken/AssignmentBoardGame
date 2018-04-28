@@ -1,0 +1,39 @@
+﻿@model BoardGameWui.Models.GameSession
+@{
+    Layout = "~/Views/Shared/_Game.cshtml";
+    ViewBag.Title = "TicTacToe";
+}
+
+@if (TempData["notice"] != null)
+{
+    <h4>@Html.Raw(TempData["notice"])</h4>
+}
+
+@if (ViewBag.Winner == Model.PlayerName)
+{
+    <h2>Congratulations, you won!</h2>
+}
+else
+{
+    <h2>Game over, @Model.OpponentName won</h2>
+}
+<p>Feel free to play again by resetting the game.<br /></p>
+
+<input type="button" value="Leave game" onclick="location.href='@Url.Action("LeaveGame", new { Model.PlayerName })'" />
+<input type="button" value="Reset game" onclick="location.href='@Url.Action("ResetGame")'" /><br /><br />
+
+@for (int i = 0; Model.GameTiles.Length > i; i++)
+{
+    if (Model.GameTiles[i].Mark.ToString().Equals("Available"))
+    {
+        <input type="button" class="boardbutton" value="&nbsp" />
+    }
+    else
+    {
+        <input type="button" class="boardbutton" value=@Model.GameTiles[i].Mark.ToString() />
+    }
+    if ((i + 1) % 3 == 0)
+    {
+        <br />
+    }
+}

@@ -110,6 +110,8 @@
     <Content Include="Views\web.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\TicTacToe\Game.cshtml" />
+    <Content Include="Views\TicTacToe\GameOver.cshtml" />
+    <Content Include="Views\TicTacToe\GameDraw.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
