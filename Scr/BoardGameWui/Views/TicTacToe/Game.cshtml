@@ -22,7 +22,7 @@
 {
     if (Model.GameTiles[i].Mark.Equals(""))
     {
-        <input type="button" class="boardbutton" value="&nbsp" onclick="location.href='@Url.Action("PickTile", new { @session = Model, @index = i })'" />
+        <input type="button" class="boardbutton" value="&nbsp" onclick="location.href='@Url.Action("PickTile", new { @playerName = Model.PlayerName, @index = i })'" />
     }
     else
     {

@@ -39,7 +39,7 @@ namespace BoardGameWui.Controllers
         
         public ActionResult JoinLobby(GameSession session)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) // if PlayerName is valid (!= null & length > 0)
             {
                 AddPlayer(session.PlayerName);
             }
@@ -65,9 +65,9 @@ namespace BoardGameWui.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult PickTile(GameSession session, int index)
+        public ActionResult PickTile(string playerName, int index)
         {
-            GameEngine.PlaceMark(Mark.Cross, index);
+            GameEngine.PlaceMark(GameEngine.GetPlayers()[0] == playerName ? Mark.Cross : Mark.Circle, index);
             return RedirectToAction("Index");
         }
 
