@@ -18,10 +18,17 @@
 
 <input type="button" value="Leave game" onclick="location.href='@Url.Action("LeaveGame", Model)'" />
 <input type="button" value="Reset game" onclick="location.href='@Url.Action("ResetGame")'" /><br /><br />
-@for (int i = 1; Model.GameTiles.Length >= i; i++)
+@for (int i = 0; Model.GameTiles.Length > i; i++)
 {
-    <input type="button" class="boardbutton" value="X" onclick="location.href='@Url.Action("LeaveGame", Model)'" />
-    if (i % 3 == 0)
+    if (Model.GameTiles[0].OccupiedBy == "")
+    {
+        <input type="button" class="boardbutton" value="" onclick="location.href='@Url.Action("PickTile", new { Model, i })'" />
+    }
+    else
+    {
+
+    }
+    if ((i+1) % 3 == 0)
     {
         <br />
     }

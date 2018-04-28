@@ -11,7 +11,7 @@ namespace BoardGameWui.Controllers
     public class TicTacToeController : Controller
     {
 
-        private static TicTacToe Game = new TicTacToe();
+        private static TicTacToe GameEngine = new TicTacToe();
 
         private static string CookieName = "PlayerName";
 
@@ -20,10 +20,10 @@ namespace BoardGameWui.Controllers
             GameSession session = GetPlayer();
             if (session.PlayerName != null)
             {
-                session.OpponentName = Game.GetOpponentName(session.PlayerName);
+                session.OpponentName = GameEngine.GetOpponentName(session.PlayerName);
                 if (session.OpponentName != null)
                 {
-                    session.GameTiles = Game.GetGameTiles();
+                    session.GameTiles = GameEngine.GetGameTiles();
                     return View("Game", session);
                 }
                 else
@@ -36,12 +36,12 @@ namespace BoardGameWui.Controllers
                 return View("Lobby", session);
             }
         }
-
-        public ActionResult JoinLobby(GameSession model)
+        
+        public ActionResult JoinLobby(GameSession session)
         {
             if (ModelState.IsValid)
             {
-                AddPlayer(model.PlayerName);
+                AddPlayer(session.PlayerName);
             }
             else
             {
@@ -50,30 +50,35 @@ namespace BoardGameWui.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult LeaveGame(GameSession model)
+        public ActionResult LeaveGame(GameSession session)
         {
-            Game.RemovePlayer(model.PlayerName);
+            GameEngine.RemovePlayer(session.PlayerName);
             ClearPlayerCookie();
-            TempData["notice"] = "Player \"" + model.PlayerName + "\" left the game.";
+            TempData["notice"] = "Player \"" + session.PlayerName + "\" left the game.";
             return RedirectToAction("Index");
         }
 
         public ActionResult ResetGame()
         {
-            Game.ResetGame();
+            GameEngine.ResetGame();
             TempData["notice"] = "The game was reset.";
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult PickTile(GameSession session, int? id)
+        {
             return RedirectToAction("Index");
         }
 
         private GameSession GetPlayer()
         {
-            GameSession model = new GameSession();
+            GameSession session = new GameSession();
             string playerName = GetPlayerCookieName();
             if (playerName != null)
             {
-                if (!Game.GetPlayers().Any(n => n.Equals(playerName, StringComparison.InvariantCultureIgnoreCase))) // if cookie name isn't in game (due to restart)
+                if (!GameEngine.GetPlayers().Any(n => n.Equals(playerName, StringComparison.InvariantCultureIgnoreCase))) // if cookie name isn't in game (due to restart)
                 {
-                    if (!Game.IsGameFull())
+                    if (!GameEngine.IsGameFull())
                     {
                         AddPlayer(playerName);
                     }
@@ -82,12 +87,12 @@ namespace BoardGameWui.Controllers
                         ClearPlayerCookie();
                     }
                 }
-                if (Game.GetPlayers().Any(n => n.Equals(playerName, StringComparison.InvariantCultureIgnoreCase))) // if cookie name is in game
+                if (GameEngine.GetPlayers().Any(n => n.Equals(playerName, StringComparison.InvariantCultureIgnoreCase))) // if cookie name is in game
                 {
-                    model.PlayerName = playerName;
+                    session.PlayerName = playerName;
                 }
             }
-            return model;
+            return session;
         }
 
         private void AddPlayer(string name)
@@ -97,11 +102,11 @@ namespace BoardGameWui.Controllers
             {
                 startStr = TempData["notice"] + " " + "<br />"; // will be used if the game was reset and player has a cookie, to show both reset + join messages
             }
-            if (!Game.GetPlayers().Any(n => n.Equals(name, StringComparison.InvariantCultureIgnoreCase))) // if player name isn't taken
+            if (!GameEngine.GetPlayers().Any(n => n.Equals(name, StringComparison.InvariantCultureIgnoreCase))) // if player name isn't taken
             {
-                if (!Game.IsGameFull())
+                if (!GameEngine.IsGameFull())
                 {
-                    Game.AddPlayer(name);
+                    GameEngine.AddPlayer(name);
                     StorePlayerCookie(name);
                     TempData["notice"] = startStr + "Player \"" + name + "\" joined the game.";
                 }

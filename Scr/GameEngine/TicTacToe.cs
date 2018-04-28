@@ -17,7 +17,7 @@ namespace GameEngine
             {
                 for (int y = 0; 3 > y; y++)
                 {
-                    GameTiles[x + y] = new GameBoardTile(new Point(x, y), null);
+                    GameTiles[x + y] = new GameBoardTile(new Point(x, y), "");
                 }
             }
         }

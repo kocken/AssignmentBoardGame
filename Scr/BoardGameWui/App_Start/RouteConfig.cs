@@ -14,11 +14,22 @@ namespace BoardGameWui
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Game",
+                url: "TicTacToe/Game",
+                defaults: new { controller = "TicTacToe", action = "Index" }
+            );
+
+            routes.MapRoute(
+                name: "Lobby",
+                url: "TicTacToe/Lobby",
+                defaults: new { controller = "TicTacToe", action = "Index" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "TicTacToe",  action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "TicTacToe", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
 }
-
