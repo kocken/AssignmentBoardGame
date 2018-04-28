@@ -13,22 +13,6 @@ namespace GameEngine
 
         public string LastActivePlayer;
 
-        public int MovesExecuted
-        {
-            get
-            {
-                int moves = 0;
-                foreach (GameBoardTile tile in GameTiles)
-                {
-                    if (tile.Mark != Mark.Available)
-                    {
-                        moves++;
-                    }
-                }
-                return moves;
-            }
-        }
-
         public TicTacToe()
         {
             ResetBoard();
@@ -39,6 +23,11 @@ namespace GameEngine
         {
             LastActivePlayer = name;
             GameTiles[index].Mark = mark;  
+        }
+
+        public string GetPlayerTurn()
+        {
+            return GetMovesExecuted() % 2 == 0 ? Players[0] : Players[1];
         }
 
         public bool IsGameFinished() // if three of the same mark is in a line
@@ -140,6 +129,19 @@ namespace GameEngine
                     index++;
                 }
             }
+        }
+
+        private int GetMovesExecuted()
+        {
+            int moves = 0;
+            foreach (GameBoardTile tile in GameTiles)
+            {
+                if (tile.Mark != Mark.Available)
+                {
+                    moves++;
+                }
+            }
+            return moves;
         }
 
     }

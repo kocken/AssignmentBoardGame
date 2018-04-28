@@ -17,6 +17,7 @@ else
 {
     <h2>Game over, @Model.OpponentName won</h2>
 }
+
 <p>Feel free to play again by resetting the game.<br /></p>
 
 <input type="button" value="Leave game" onclick="location.href='@Url.Action("LeaveGame", new { Model.PlayerName })'" />

@@ -6,6 +6,13 @@ namespace GameEngine
 {
     public interface IGameEngine
     {
+        List<string> Players { get; }
 
+        bool IsGameFinished();
+        bool IsGameWon();
+        bool IsGameFull();
+        void AddPlayer(string name);
+        void RemovePlayer(string name);
+        void ResetGame();
     }
 }

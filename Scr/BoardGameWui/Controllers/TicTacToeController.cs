@@ -35,7 +35,7 @@ namespace BoardGameWui.Controllers
                     }
                     else
                     {
-                        session.MyTurn = GameEngine.MovesExecuted % 2 == (GameEngine.IsPlayerOne(session.PlayerName) ? 0 : 1);
+                        session.MyTurn = GameEngine.GetPlayerTurn() == session.PlayerName;
                         return View("Game", session);
                     }
                 }
