@@ -1,14 +1,20 @@
 # Board game architecture
 
 ## GameEngine
-In the GameEngine project, all code revolving the actual game is located. The main file is "TicTacToe.cs". 
+In the GameEngine project, all code revolving the actual game (backend) is located. 
+It requires a frontend to be used though, in order to show up all the game-tiles and to call/communicate with this backend. This is done within the "BoardGameWui" project described below.
+
+The main file is "TicTacToe.cs". 
 
 This file has all game logic; logic for whatever a game is finished/won, logic for knowing if the game/lobby is full or not, methods to make a player join/leave, method to make player-moves, to restart the game and so on. 
 This file also contains the game data; a list of the player names, a variable of the player who made the most recent move (which is used to store the winner, if a game has be won) as well as an array of the (9) gameboard-tiles. 
 The gameboard-tiles have their own object class called "GameBoardTile". This file contains coordinates (a point with x and y), as well as a mark-value. 
 The mark variable and variable is of the custom-made "Mark" enum-type, which can be "X", "O" and "Available". 
 
-When the TicTacToe file is initialized, it populates the gameboard-tiles with coordinates and makes the tiles have the mark-value "Available".
+When the TicTacToe file is initialized, it populates the gameboard-tiles with coordinates and makes the tiles have the mark-value "Available". 
+
+While this game engine is relatively simple, it could very well be used as a base for other online/game projects due to the many useful methods that will required in these type of projects. 
+In fact, the majority of methods would be of great use in these kind of online/game projects, such as join/leave/reset/get opponent name etc.
 
 ## BoardGameWui
 In the BoardGameWui project, all code revolving the web and MVC is located. 
