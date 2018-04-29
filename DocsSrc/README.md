@@ -24,6 +24,8 @@ https://www.youtube.com/watch?v=YSHW9F2dtOY&list=PLC46E714C386B068B
 "@Html#Raw" usage
 https://stackoverflow.com/questions/26902189/how-to-split-the-success-message
 
+https://www.codeproject.com/Articles/871375/Understanding-ASP-NET-MVC-using-real-world-example
+
 https://forums.asp.net/t/2017595.aspx?How+to+pass+object+of+class+in+url+action+in+mvc+C+
 
 http://www.tutorialsteacher.com/mvc/routing-in-mvc
