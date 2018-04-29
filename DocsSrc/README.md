@@ -7,7 +7,7 @@ When the project is running through Visual Studio and the browser pops up with t
 
 If you'd like to leave or reset the game, you can do so by clicking the buttons. The leave game button is only available when you're part of the lobby/game.
 
-The game stores your player session through cookies, whereas the cookie is saved for 30 days. If you leave the game, your cookie will be removed. Until it's removed, you will auto-join games/lobbies with the same player name. 
+The game stores your player-name through a cookie, whereas the cookie is saved for 30 days. If you leave the game, your cookie will be removed. Until it's removed, you will auto-join games/lobbies with the same player name. 
 
 To update the lobby/game, simply press F5 on your browser to refresh the page. 
 
