@@ -18,10 +18,16 @@ Only two players are able to play, if a third person tries join then a notice-me
 
 ## Resources used
 
-Roger Harford's short "Introduction to ASP.NET MVC" youtube playlist
+Roger Harford's short "Introduction to ASP.NET MVC" youtube playlist 
 https://www.youtube.com/watch?v=YSHW9F2dtOY&list=PLC46E714C386B068B
 
-"@Html#Raw" usage
+Round buttons 
+https://www.w3schools.com/howto/howto_css_round_buttons.asp
+
+Button size, in order to make buttons the same size 
+https://www.sitepoint.com/community/t/how-to-make-css-buttons-the-same-size/2720
+
+"@Html#Raw" usage 
 https://stackoverflow.com/questions/26902189/how-to-split-the-success-message
 
 https://www.codeproject.com/Articles/871375/Understanding-ASP-NET-MVC-using-real-world-example
