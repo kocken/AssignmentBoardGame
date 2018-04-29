@@ -148,7 +148,7 @@ namespace BoardGameWui.Controllers
             HttpCookie playerCookie = new HttpCookie(CookieName);
             playerCookie.Value = name;
             playerCookie.Expires = DateTime.Now.AddDays(30);
-            Response.Cookies.Add(playerCookie);
+            Response.Cookies.Set(playerCookie);
         }
 
         private void ClearPlayerCookie()
