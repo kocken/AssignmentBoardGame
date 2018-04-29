@@ -1,8 +1,7 @@
 You can see the content of this by opening commandline and navigate to the DocsSrc folder, and write ```docfx .\docfx.json --serve --port 8081```, then open your browser and navigate to [localhost:8081](http://localhost:8081).
 
 
-
-**NOTES**
+## Notes
 
 When the project is running through Visual Studio and the browser pops up with the localhost URL, you will be able to join the game. 
 
@@ -17,13 +16,12 @@ Only two players are able to play, if a third person tries join then a notice-me
 "Server" messages (notices), given when players join/leave and when the game is reset (with more) is only shown once temporary, and is only shown by the person executing the action.
 
 
-
-**RESOURCES USED**
+## Resources used
 
 Roger Harford's short "Introduction to ASP.NET MVC" youtube playlist
 https://www.youtube.com/watch?v=YSHW9F2dtOY&list=PLC46E714C386B068B
 
-@Html#Raw information
+"@Html#Raw" usage
 https://stackoverflow.com/questions/26902189/how-to-split-the-success-message
 
 https://forums.asp.net/t/2017595.aspx?How+to+pass+object+of+class+in+url+action+in+mvc+C+
@@ -33,8 +31,7 @@ http://www.tutorialsteacher.com/mvc/routing-in-mvc
 http://www.tutorialsteacher.com/mvc/viewbag-in-asp.net-mvc
 
 
-
-**HOW TO PLAY**
+## How to play
 
 Just looking at the website provides enough information to be able to play, but if you'd like further detailed information, look below. 
 
