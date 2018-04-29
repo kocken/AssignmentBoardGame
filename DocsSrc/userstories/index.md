@@ -1,11 +1,13 @@
 # User stories
 
-Use this template when writing the user stories:
+"As a player, I want to remain logged in with the same player-name, so I don't have to constantly rejoin/login."
 
-"As a < type of user >, I want < some goal > so that < some reason >."
+"As a player, I want to know which tiles are available, so I don't have to guess."
 
-Create a new Markdown file for each userstory and create a toc.yml in the userstories folder, and add each userstory to the TOC (table of content).
+"As a player, I want to know when it's my turn, so I don't have to guess."
 
-Read more on userstories at [https://www.mountaingoatsoftware.com/agile/user-stories
-](https://www.mountaingoatsoftware.com/agile/user-stories
-)
+"As a player, I want to know who's the winner after a finished game, so I'm certain the winner is the one who I think it is."
+
+"As a player, I want to be able to leave the game, in case I'd like to change name or swap my place with a friend."
+
+"As a player, I want to be able to reset the game through the web interface, for the ease of access."
